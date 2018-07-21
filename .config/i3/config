@@ -1,0 +1,237 @@
+# === VARIABLES ===
+# Workspaces
+set $w1 1
+set $w2 2
+set $w3 3
+set $w4 4
+set $w5 5
+set $w6 6
+set $w7 7
+set $w8 8
+set $w9 9
+set $w10 10
+
+set $term urxvt
+set $web firefox
+
+
+
+# === SETUP ===
+set $mod Mod4
+
+font pango:DejaVu Sans Mono 10
+
+# All commands are the QWERTY commands
+# If a comment says the command is mod-f, for example, it is mod-f on the
+# QWERTY keyboard
+# It does not change location based on keyboard layout - only key press
+
+# i3-gaps
+# Disable title bars, make borders 5 px
+for_window [class="^.*"] border pixel 5
+# Set inner and outer gaps
+gaps inner 15
+gaps outer 5
+
+# Do not focus on window mouse goes to
+focus_follows_mouse no
+# Do not warp mouse when changing windows
+mouse_warping none
+# Allow repressing workspace change to move back to destination
+#workspace_auto_back_and_forth yes
+
+
+# class                 border  backgr. text    indicator
+client.focused          #283c5b #283c5b #cccccc #283c5b
+client.focused_inactive #000000 #000000 #dddddd #000000
+client.unfocused        #000000 #000000 #dddddd #A074C4
+client.urgent           #702729 #702729 #cccccc #DCCD69
+
+client.background       #ffffff
+
+# Sets background image
+exec_always --no-startup-id feh --randomize --bg-fill ~/images/bg/*
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+exec_always --no-startup-id xautolock -time 15 -locker "sudo zzz; i3-msg exit"
+
+exec_always --no-startup-id xmodmap .Xmodmap
+
+exec_always --no-startup-id compton
+
+# set keyboard layout to dvorak - shift to qwerty with alt-shift
+exec --no-startup-id setxkbmap -layout dvorak,us -option grp:alt_shift_toggle
+# use keyboard in ~/.Xmodmap
+exec --no-startup-id xmodmap .Xmodmap
+# use mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# i always start firefox and top in workspace 1, so automate it
+exec --no-startup-id "i3-msg 'workspace $w1; append_layout /home/evan/.config/i3/workspace-1.json'"
+exec --no-startup-id "$web"
+exec --no-startup-id "$term -e /home/evan/bin/wtf -name wtf"
+
+# scratchpad
+exec_always --no-startup-id "$term -name scratchterm"
+for_window [instance="scratchterm"] move window to scratchpad
+
+
+# === bindings ===
+# start $term - mod-enter
+bindcode $mod+36 exec $term
+# kill focused window - mod-shift-q
+bindcode $mod+shift+24 kill
+# dmenu - mod-d
+bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+
+# get random background - mod-shift-b
+bindcode $mod+shift+56 exec feh --randomize --bg-fill ~/images/bg/*
+
+# increase inner gaps by 10 - mod-u
+bindcode $mod+30 gaps inner all plus 10
+# decrease inner gaps by 10 - mod-shift-u
+bindcode $mod+shift+30 gaps inner all minus 10
+# increase outer gaps by 10 - mod-o
+bindcode $mod+32 gaps outer all plus 10
+# decrease outer gaps by 10 - mod-shift-o
+bindcode $mod+shift+32 gaps outer all minus 10
+
+
+# applications
+bindcode $mod+67 exec "$web"
+# mod-f1
+bindcode $mod+68 exec vlc
+# mod-f2
+bindcode $mod+69 exec okular
+# mod-f3
+bindcode $mod+70 exec "$term -e cmus"
+# mod-f4
+bindcode $mod+27 exec "$term -e ranger"
+# mod-r
+bindcode $mod+107 exec "$term -e import ~/images/screenshots/screenshot_$(date +'%m%d%y_%h%m%s').png"
+# mod-printscrn sets up screenshot tool
+
+# sound settings
+# volume up button
+bindcode 123 exec amixer -q sset Master 5%+
+# volume down button
+bindcode 122 exec amixer -q sset Master 5%-
+# volume mute button
+bindcode 121 exec amixer -q sset Master toggle && amixer -q sset headphone unmute
+
+# brightness
+# mod-f9
+bindcode $mod+75 exec xbacklight + 10
+# mod-f8
+bindcode $mod+74 exec xbacklight - 10
+
+# change focus - note these are dvorak vim bindings
+# mod-j
+bindcode $mod+44 focus left
+# mod-c
+bindcode $mod+54 focus down
+# mod-v
+bindcode $mod+55 focus up
+# mod-p
+bindcode $mod+33 focus right
+
+# move focused window
+bindcode $mod+shift+44 move left
+# mod-shift-j
+bindcode $mod+shift+54 move down
+# mod-shift-c
+bindcode $mod+shift+55 move up
+# mod-shift-v
+bindcode $mod+shift+33 move right
+# mod-shift-p
+
+# split in horizontal orientation - mod-h
+bindcode $mod+43 split h
+# split in vertical orientation - mod-b
+bindcode $mod+56 split v
+# enter fullscreen mode for the focused container - mod-f
+bindcode $mod+41 fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindcode $mod+39 layout stacking
+# mod-s
+bindcode $mod+25 layout tabbed
+# mod-w
+bindcode $mod+26 layout toggle split
+# mod-e
+
+# toggle tiling / floating - mod-shift-space
+bindcode $mod+shift+65 floating toggle
+# change focus between tiling / floating windows - mod-space
+bindcode $mod+65 focus mode_toggle
+# focus the parent container - mod-a
+bindcode $mod+38 focus parent
+# focus the child container - mod-z
+bindcode $mod+52 focus child
+
+# switch to workspace
+# mod-1 through 0
+bindcode $mod+10 workspace $w1
+bindcode $mod+11 workspace $w2
+bindcode $mod+12 workspace $w3
+bindcode $mod+13 workspace $w4
+bindcode $mod+14 workspace $w5
+bindcode $mod+15 workspace $w6
+bindcode $mod+16 workspace $w7
+bindcode $mod+17 workspace $w8
+bindcode $mod+18 workspace $w9
+bindcode $mod+19 workspace $w10
+
+# move focused container to workspace
+# mod-shift-1 through 0
+bindcode $mod+shift+10 move container to workspace $w1
+bindcode $mod+shift+11 move container to workspace $w2
+bindcode $mod+shift+12 move container to workspace $w3
+bindcode $mod+shift+13 move container to workspace $w4
+bindcode $mod+shift+14 move container to workspace $w5
+bindcode $mod+shift+15 move container to workspace $w6
+bindcode $mod+shift+16 move container to workspace $w7
+bindcode $mod+shift+17 move container to workspace $w8
+bindcode $mod+shift+18 move container to workspace $w9
+bindcode $mod+shift+19 move container to workspace $w10
+
+# scratchpad
+# mod-shift--
+bindcode $mod+shift+48 move scratchpad
+# mod--
+bindcode $mod+48 scratchpad show
+
+# reload the configuration file - mod-shift-z
+bindcode $mod+shift+52 reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3) - mod-shift-r
+bindcode $mod+shift+27 restart
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+  # these bindings trigger as soon as you enter the resize mode
+
+  # pressing left will shrink the window’s width.
+  # pressing right will grow the window’s width.
+  # pressing up will shrink the window’s height.
+  # pressing down will grow the window’s height.
+  bindcode 44 resize shrink width 10 px or 10 ppt
+  # mod-j
+  bindcode 45 resize grow height 10 px or 10 ppt
+  # mod-k
+  bindcode 46 resize shrink height 10 px or 10 ppt
+  # mod-l
+  bindcode 47 resize grow width 10 px or 10 ppt
+  # mod-;
+
+  # back to normal: enter or escape
+  bindcode 36 mode "default"
+  # enter
+  bindcode 9 mode "default"
+  # esc
+}
+
+bindcode $mod+58 mode "resize"
+# mod-m
+
+

@@ -1,0 +1,76 @@
+" === PLUGINS ===
+" pathogen
+execute pathogen#infect()
+
+" vim-latex-live-preview
+autocmd Filetype tex setl updatetime=1000 " Preview update every 1s
+"let g:livepreview_previewer = 'mupdf'   " Set live preview to mupdf
+let g:livepreview_previewer = 'okular'   " Use Okular as default preview
+
+
+" === SETTINGS ===
+runtime! voidlinux.vim
+syntax on
+let g:rehash256 = 1
+colorscheme molokai                    " Open to suggestions for color scheme
+                                       " Testable with :colo [name]
+
+hi Normal ctermbg=none
+
+set t_Co=256                           " 256 color mode - just in case
+
+" Show trailing whitespace except when inserting at end of line
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhiteSpace /\s\+\%#\@<!$/
+
+
+" If I need different than 2 spaces for a file, change and edit
+"autocmd FileType c setlocal tabstop=4 shiftwidth=4 noexpandtab
+
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+                                       " tabstop: number of spaces tabs are
+                                       " softtabstop: tabstop when editing
+                                       " shiftwidth: for >> commands
+                                       " expandtab: makes tabs as spaces
+
+filetype plugin indent on
+set number                             " Adds line number for current line
+set cursorline                         " Highlights current line
+set wildmenu                           " Visual tab complete for command menu
+set lazyredraw                         " Makes vim not do unneeded redraws
+set showmatch                          " Highlights matching paretheses
+set ruler                              " Display cursor position in last line
+set confirm                            " Asks for confirmation for unsaved files
+set visualbell                         " Visual > audio for when doing something wrong
+set clipboard=unnamedplus              " Enables copy to clipboard
+
+" Searching
+set incsearch                          " Search as characters are entered
+set hlsearch                           " Highlights matches
+
+" Backups are annoying, but necessary.
+" This saves backups to a special tmp folder for use
+" rather than saving in the directory of the file
+" Go hoos!
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+
+
+" Folding
+"set foldmethod=syntax                 " Base folds on syntax
+
+" === REMAPS ===
+" Remap space to open/close folds
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
+" Movement bindings
+" Make vertical movement not get confused by wrapped lines
+" such that vertical movement bases off visual lines
+nnoremap j gj
+nnoremap k gk
+
+vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>

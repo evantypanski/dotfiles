@@ -1,0 +1,89 @@
+wtf:
+  colors:
+    border:
+      focusable: darkslateblue
+      focused: orange
+      normal: gray
+  grid:
+    columns: [30, 40, 40]
+    rows: [13, 13, 10, 17]
+  refreshInterval: 1
+  mods:
+    gcal:
+      colors:
+        title: "orange"
+        description: "lightblue"
+        highlights:
+        - ['1on1|1\/11', 'green']
+        - ['apple|google|aws', 'blue']
+        - ['interview|meet', 'magenta']
+        - ['lunch', 'yellow']
+        past: "gray"
+      conflictIcon: "🚨"
+      currentIcon: "💥"
+      displayResponseStatus: true
+      email: "evantypanski@gmail.com"
+      enabled: true
+      eventCount: 12
+      position:
+        top: 0
+        left: 2
+        height: 3
+        width: 1
+      refreshInterval: 300
+      secretFile: "~/.wtf/gcal/client_secret.json"
+      withLocation: true
+    todo:
+      checkedIcon: "X"
+      colors:
+        checked: gray
+        highlight:
+          fore: "black"
+          back: "orange"
+      enabled: true
+      filename: "todo.yml"
+      position:
+        top: 0
+        left: 0
+        height: 4
+        width: 1
+      refreshInterval: 3600
+    weather:
+      # From http://openweathermap.org/help/city_list.txt
+      cityids:
+      - 4758023
+      - 4752031
+      colors:
+        current: "lightblue"
+      enabled: true
+      language: "EN"
+      position:
+        top: 0
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 900
+      tempUnit: "F"
+    git:
+      commitCount: 10
+      enabled: true
+      position:
+        top: 1
+        left: 1
+        height: 2
+        width: 1
+      refreshInterval: 8
+      repositories:
+      - "/home/evan/Documents/programming/sites/personal_site_3/"
+    github:
+      enabled: true
+      position:
+        top: 3
+        left: 1
+        height: 1
+        width: 2
+      refreshInterval: 300
+      repositories:
+        fulcrum: "customink"
+        groups: "customink"
+      username: "evantypanski"

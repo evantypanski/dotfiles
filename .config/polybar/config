@@ -1,0 +1,302 @@
+[colors]
+background = #A6000000
+background-alt = #444
+foreground = #dfdfdf
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+red = #d10000
+orange = #ff6622
+yellow = #ffda21
+green = #008000
+blue = #1133cc
+indigo = #220066
+violet = #330044
+
+[bar/rainbowbar]
+width = 100%
+height = 27
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+;border-size = 4
+;border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 4
+
+font-0 = "DejaVu:pixelsize=8;1"
+font-1 = "Font Awesome 5 Free:pixelsize=10;1"
+font-2 = "Font Awesome 5 Free Solid:pixelsize=9;1"
+font-3 = "Font Awesome 5 Brands:pixelsize=10;1"
+font-4 = "Siji:pixelsize=10;1"
+
+modules-left = i3
+;modules-center = mpd
+modules-right = xbacklight volume memory battery1 battery0 keyboard date powermenu
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = $(bar.background)
+
+wm-restack = i3
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+ws-icon-0 = 1;: www
+ws-icon-default =
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%%icon%
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%%icon%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%%icon%
+label-visible-background = ${self.label-focused-background}
+;label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%%icon%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format-prefix-foreground = ${colors.foreground-alt}
+
+format = <ramp> <label> 
+format-underline = ${colors.red}
+label = BL %percentage%%
+
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+;[module/network]
+;type = internal/network
+;interface = wlp3s0
+;interval = 3.0
+
+;label-connected = %{A:echo %local_ip% | xclip -sel clip:}%local_ip%%{A}  %essid%%{A}
+;format-connected-prefix = " "
+;format-connected = <label-connected>
+;format-connected-underline = ${colors.yellow}
+
+;format-disconnected = %{A:nm-connection-editor&:}disconnected%{A}
+;format-disconnected-underline = ${colors.yellow}
+;format-disconnected-prefix = " "
+
+[module/memory]
+type = internal/memory
+
+format = <label> <ramp-used>
+format-underline = ${colors.yellow}
+label = %gb_used% / %gb_total%
+
+; Only applies if <ramp-used> is used
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = " %a, %b %d %Y "
+
+time = " %I:%M %p"
+
+format-prefix = " "
+format-underline = ${colors.violet}
+
+label = %date% @ %time%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume> <label-volume>
+format-volume-underline = ${colors.orange}
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+format-muted-prefix = "  "
+format-muted-underline = ${colors.orange}
+label-muted = sound muted
+
+[module/battery1]
+type = internal/battery
+battery = BAT1
+adapter = ADP1
+full-at = 98
+
+format-charging = <label-charging>
+format-charging-prefix = " "
+format-charging-underline = ${colors.green}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.green}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.green}
+format-full-underline = ${colors.green}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+[module/battery0]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging = <label-charging>
+format-charging-prefix = " "
+format-charging-underline = ${colors.blue}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.blue}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.green}
+format-full-underline = ${colors.blue}
+
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = #de0037
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = #de0037
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+;format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+;format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+menu-0-2 = logout
+menu-0-2-exec = menu-open-3
+
+menu-1-0 = reboot
+menu-1-0-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+
+menu-3-0 = logout
+menu-3-0-exec = i3-msg exit
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
+
+[module/keyboard]
+type = internal/xkeyboard
+
+; List of indicators to ignore
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
+format = <label-layout> <label-indicator>
+format-spacing = 0
+format-prefix = " "
+format-underline = ${colors.indigo}
+
+; Available tokens:
+;   %layout%
+;   %name%
+;   %number%
+; Default: %layout%
+label-layout = %name%
+label-layout-padding = 2
+
