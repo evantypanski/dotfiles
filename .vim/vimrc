@@ -1,3 +1,5 @@
+set nocompatible
+
 " === PLUGINS ===
 " pathogen
 execute pathogen#infect()
@@ -25,13 +27,12 @@ match ExtraWhiteSpace /\s\+\%#\@<!$/
 
 
 " If I need different than 2 spaces for a file, change and edit
-"autocmd FileType c setlocal tabstop=4 shiftwidth=4 noexpandtab
+"autocmd FileType rust setlocal tabstop=2 shiftwidth=2 noexpandtab
 
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-                                       " tabstop: number of spaces tabs are
-                                       " softtabstop: tabstop when editing
-                                       " shiftwidth: for >> commands
-                                       " expandtab: makes tabs as spaces
+set tabstop=2                         " tabstop: number of spaces tabs are
+set softtabstop=2                     " softtabstop: tabstop when editing
+set shiftwidth=2                      " shiftwidth: for >> commands
+set expandtab                         " expandtab: makes tabs as spaces
 
 filetype plugin indent on
 set number                             " Adds line number for current line
