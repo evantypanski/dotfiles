@@ -43,7 +43,7 @@ font-4 = "Siji:pixelsize=10;1"
 
 modules-left = i3
 ;modules-center = mpd
-modules-right = xbacklight volume memory battery1 battery0 keyboard date powermenu
+modules-right = xbacklight volume wireless-network battery1 battery0 keyboard date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -110,36 +110,36 @@ ramp-2 = 🌓
 ramp-3 = 🌒
 ramp-4 = 🌑
 
-;[module/network]
-;type = internal/network
-;interface = wlp3s0
-;interval = 3.0
+[module/wireless-network]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
 
-;label-connected = %{A:echo %local_ip% | xclip -sel clip:}%local_ip%%{A}  %essid%%{A}
-;format-connected-prefix = " "
-;format-connected = <label-connected>
-;format-connected-underline = ${colors.yellow}
+label-connected = %{A:echo %local_ip% | xclip -sel clip:}%local_ip%%{A}  %{A:nmcli dev wifi rescan&:}%essid%%{A}
+format-connected-prefix = " "
+format-connected = <label-connected>
+format-connected-underline = ${colors.yellow}
 
-;format-disconnected = %{A:nm-connection-editor&:}disconnected%{A}
-;format-disconnected-underline = ${colors.yellow}
-;format-disconnected-prefix = " "
+format-disconnected = %{A:nm-connection-editor&:}disconnected%{A}
+format-disconnected-underline = ${colors.yellow}
+format-disconnected-prefix = " "
 
-[module/memory]
-type = internal/memory
+;[module/memory]
+;type = internal/memory
 
-format = <label> <ramp-used>
-format-underline = ${colors.yellow}
-label = %gb_used% / %gb_total%
+;format = <label> <ramp-used>
+;format-underline = ${colors.yellow}
+;label = %gb_used% / %gb_total%
 
 ; Only applies if <ramp-used> is used
-ramp-used-0 = ▁
-ramp-used-1 = ▂
-ramp-used-2 = ▃
-ramp-used-3 = ▄
-ramp-used-4 = ▅
-ramp-used-5 = ▆
-ramp-used-6 = ▇
-ramp-used-7 = █
+;ramp-used-0 = ▁
+;ramp-used-1 = ▂
+;ramp-used-2 = ▃
+;ramp-used-3 = ▄
+;ramp-used-4 = ▅
+;ramp-used-5 = ▆
+;ramp-used-6 = ▇
+;ramp-used-7 = █
 
 [module/date]
 type = internal/date
