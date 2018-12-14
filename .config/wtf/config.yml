@@ -1,0 +1,119 @@
+wtf:
+  colors:
+    border:
+      focusable: darkslateblue
+      focused: orange
+      normal: gray
+  grid:
+    # Half screen width ~95
+    columns: [45, 50]
+    # Screen height ~52
+    rows: [13, 10, 11, 18]
+  refreshInterval: 1
+  mods:
+    prettyweather:
+      enabled: true
+      # Grabbed from IP so not needed
+      #city: "charlottesville"
+      position:
+        top: 0
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 300
+      unit: "F"
+      view: 0
+      language: "en"
+    resourceusage:
+      enabled: true
+      position:
+        top: 1
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 1
+    ipinfo:
+      colors:
+        name: green
+        value: white
+      enabled: true
+      position:
+        top: 2
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 150
+    hackernews:
+      enabled: true
+      numberOfStories: 10
+      position:
+        top: 3
+        left: 0
+        height: 1
+        width: 2
+      storyType: top
+      refreshInterval: 900
+    gcal:
+      colors:
+        title: "white"
+        description: "lightblue"
+        highlights:
+        - ['band|basketball|football|ensemble', 'orange']
+        - ['class|cs|lecture', 'green']
+        - ['exam|test', 'magenta']
+        - ['interview|offer|call', 'yellow']
+        - ['gizmologists|cyberhoos|club', 'steelblue']
+        past: "gray"
+      conflictIcon: "🚨"
+      currentIcon: "💥"
+      email: "evantypanski@gmail.com"
+      enabled: true
+      eventCount: 12
+      position:
+        top: 0
+        left: 1
+        height: 3
+        width: 1
+      refreshInterval: 300
+      secretFile: "~/.config/wtf/gcal/client_secret.json"
+      multiCalendar: true
+      withLocation: false
+      displayResponseStatus: false
+    # --- UNUSED ---
+    weather:
+      # From http://openweathermap.org/help/city_list.txt
+      cityids:
+      - 4752031
+      colors:
+        current: "lightblue"
+      enabled: false
+      language: "EN"
+      position:
+        top: 0
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 900
+      tempUnit: "F"
+    git:
+      commitCount: 10
+      enabled: false
+      position:
+        top: 2
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 8
+      repositories:
+      - "/home/evan/src/personal/projects/gremulator"
+    github:
+      enabled: false
+      position:
+        top: 1
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 300
+      repositories:
+        design: "WebAssembly"
+      username: "evantypanski"
