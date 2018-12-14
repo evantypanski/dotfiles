@@ -65,6 +65,8 @@ index-sort = true
 wrapping-scroll = false
 
 ws-icon-0 = 1;: www
+ws-icon-1 = 2;: dash
+ws-icon-2 = 3;: dev
 ws-icon-default =
 
 ; Only show workspaces on the same output as the bar
@@ -124,22 +126,22 @@ format-disconnected = %{A:nm-connection-editor&:}disconnected%{A}
 format-disconnected-underline = ${colors.yellow}
 format-disconnected-prefix = " "
 
-;[module/memory]
-;type = internal/memory
+[module/memory]
+type = internal/memory
 
-;format = <label> <ramp-used>
-;format-underline = ${colors.yellow}
-;label = %gb_used% / %gb_total%
+format = <label> <ramp-used>
+format-underline = ${colors.yellow}
+label = %gb_used% / %gb_total%
 
 ; Only applies if <ramp-used> is used
-;ramp-used-0 = ▁
-;ramp-used-1 = ▂
-;ramp-used-2 = ▃
-;ramp-used-3 = ▄
-;ramp-used-4 = ▅
-;ramp-used-5 = ▆
-;ramp-used-6 = ▇
-;ramp-used-7 = █
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
 
 [module/date]
 type = internal/date
