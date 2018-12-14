@@ -67,14 +67,17 @@ exec --no-startup-id xmodmap .Xmodmap
 # use mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# i always start firefox and top in workspace 1, so automate it
-exec --no-startup-id "i3-msg 'workspace $w1; append_layout /home/evan/.config/i3/workspace-1.json'"
-exec --no-startup-id "$web"
-exec --no-startup-id "$term -e /home/evan/bin/wtf -name wtf"
+#exec --no-startup-id "i3-msg 'workspace $w1; append_layout /home/evan/.config/i3/workspace-1.json'"
+# Start web browser, keep in ws1
+exec --no-startup-id "i3-msg 'workspace $w1; exec $web;'"
+# Start wtf, move to ws2
+exec --no-startup-id "i3-msg 'workspace $w2; exec $term -e /home/evan/go/bin/wtf'"
+# Start weechat, move to ws2
+exec --no-startup-id "i3-msg 'workspace $w2; exec $term -e weechat'"
 
 # scratchpad
-exec_always --no-startup-id "$term -name scratchterm"
-for_window [instance="scratchterm"] move window to scratchpad
+exec_always --no-startup-id "$term --title notes -e vim /home/evan/src/personal/notes/2018/today.md"
+for_window [title="notes"] move window to scratchpad
 
 
 # === bindings ===
