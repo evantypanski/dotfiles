@@ -121,7 +121,7 @@ bindcode 123 exec amixer -q sset Master 5%+
 # volume down button
 bindcode 122 exec amixer -q sset Master 5%-
 # volume mute button
-bindcode 121 exec amixer -q sset Master toggle && amixer -q sset headphone unmute
+bindcode 121 exec amixer -q sset Master toggle && amixer -q sset Headphone unmute && amixer -q sset Speaker unmute
 
 # brightness
 # mod-f9
