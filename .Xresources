@@ -1,0 +1,29 @@
+*foreground: white
+*background: black
+
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.antialias: true
+Xft.rgba: rgb
+
+*faceName: DejaVu Sans Mono:size=12:antialias=true
+
+URxvt*font: xft:DejaVu Sans Mono:size=10:antialias=true,xft:Symbola:size=10
+URxvt*scrollBar: false
+
+! Real transparency
+URxvt*depth: 32
+URxvt*background: rgba:0000/0000/0200/e600
+XTerm.vt100.locale: true
+
+! Fake transparency
+!URxvt*transparent: true
+!URxvt*shading: 20
+
+! Perl extensions
+URxvt.perl-ext-common: font-size
+
+! font size
+URxvt.keysym.C-equal: font-size:increase
+URxvt.keysym.C-minus: font-size:decrease
+URxvt.keysym.C-0: font-size:reset
