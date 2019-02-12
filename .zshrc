@@ -1,5 +1,3 @@
-# Keep env vars in .env
-source ~/.env
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -10,7 +8,7 @@ ZSH_THEME="mymaran"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(python git tmux z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -22,9 +20,6 @@ PERL_MM_OPT="INSTALL_BASE=/home/evan/perl5"; export PERL_MM_OPT;
 
 eval "$(ssh-agent)" > /dev/null
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
 # Aliases
 alias npm-exec='PATH=$(npm bin):$PATH'
 
@@ -32,6 +27,4 @@ alias npm-exec='PATH=$(npm bin):$PATH'
 eval $(thefuck --alias)
 
 alias rr='ranger'
-alias be='bundle exec'
-alias get='git status'
 alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
