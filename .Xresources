@@ -11,14 +11,21 @@ Xft.rgba: rgb
 URxvt*font: xft:DejaVu Sans Mono:size=10:antialias=true,xft:Symbola:size=10
 URxvt*scrollBar: false
 
-! Real transparency
+! Set default transparency
 URxvt*depth: 32
 URxvt*background: rgba:0000/0000/0200/e600
 XTerm.vt100.locale: true
 
-! Fake transparency
-!URxvt*transparent: true
-!URxvt*shading: 20
+! Set keybindings for changing transparency
+URxvt.keysym.C-9: command:\033]11;rgba:0000/0000/0200/ffff\007
+URxvt.keysym.C-8: command:\033]11;rgba:0000/0000/0200/f600\007
+URxvt.keysym.C-7: command:\033]11;rgba:0000/0000/0200/e600\007
+URxvt.keysym.C-6: command:\033]11;rgba:0000/0000/0200/d600\007
+URxvt.keysym.C-5: command:\033]11;rgba:0000/0000/0200/c600\007
+URxvt.keysym.C-4: command:\033]11;rgba:0000/0000/0200/c600\007
+URxvt.keysym.C-3: command:\033]11;rgba:0000/0000/0200/a600\007
+URxvt.keysym.C-2: command:\033]11;rgba:0000/0000/0200/6600\007
+URxvt.keysym.C-1: command:\033]11;rgba:0000/0000/0200/0000\007
 
 ! Perl extensions
 URxvt.perl-ext-common: font-size
