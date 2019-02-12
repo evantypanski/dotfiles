@@ -7,7 +7,7 @@ execute pathogen#infect()
 " vim-latex-live-preview
 autocmd Filetype tex setl updatetime=1000 " Preview update every 1s
 "let g:livepreview_previewer = 'mupdf'   " Set live preview to mupdf
-let g:livepreview_previewer = 'okular'   " Use Okular as default preview
+let g:livepreview_previewer = 'zathura'   " Use Zathura as default preview
 
 
 " === SETTINGS ===
@@ -26,12 +26,9 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhiteSpace /\s\+\%#\@<!$/
 
 
-" If I need different than 2 spaces for a file, change and edit
-"autocmd FileType rust setlocal tabstop=2 shiftwidth=2 noexpandtab
-
-set tabstop=2                         " tabstop: number of spaces tabs are
-set softtabstop=2                     " softtabstop: tabstop when editing
-set shiftwidth=2                      " shiftwidth: for >> commands
+set tabstop=4                         " tabstop: number of spaces tabs are
+set softtabstop=4                     " softtabstop: tabstop when editing
+set shiftwidth=4                      " shiftwidth: for >> commands
 set expandtab                         " expandtab: makes tabs as spaces
 
 filetype plugin indent on
