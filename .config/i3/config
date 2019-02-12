@@ -67,17 +67,19 @@ exec --no-startup-id xmodmap .Xmodmap
 # use mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-#exec --no-startup-id "i3-msg 'workspace $w1; append_layout /home/evan/.config/i3/workspace-1.json'"
+exec --no-startup-id "i3-msg 'workspace $w1; append_layout /home/evan/.config/i3/workspace-1.json'"
+exec --no-startup-id "i3-msg 'workspace $w2; append_layout /home/evan/.config/i3/workspace-2.json'"
 # Start web browser, keep in ws1
 exec --no-startup-id "i3-msg 'workspace $w1; exec $web;'"
 # Start wtf, move to ws2
 exec --no-startup-id "i3-msg 'workspace $w2; exec $term -e /home/evan/go/bin/wtf'"
+exec --no-startup-id "i3-msg 'workspace $w2; exec $term --title term'"
 # Start weechat, move to ws2
-exec --no-startup-id "i3-msg 'workspace $w2; exec $term -e weechat'"
+#exec --no-startup-id "i3-msg 'workspace $w2; exec $term -e weechat'"
 
 # scratchpad
-exec_always --no-startup-id "$term --title notes -e vim /home/evan/src/personal/notes/2018/today.md"
-for_window [title="notes"] move window to scratchpad
+exec_always --no-startup-id "$term --title daily-notes -e vim /home/evan/src/personal/notes/2019/today.md"
+for_window [title="daily-notes"] move window to scratchpad
 
 
 # === bindings ===
@@ -237,4 +239,4 @@ mode "resize" {
 bindcode $mod+58 mode "resize"
 # mod-m
 
-
+# vim:filetype=i3
