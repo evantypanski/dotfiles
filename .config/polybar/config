@@ -64,36 +64,43 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 
-ws-icon-0 = 1;: www
-ws-icon-1 = 2;: dash
-ws-icon-2 = 3;: dev
+ws-icon-0 = 1;I
+ws-icon-1 = 2;II
+ws-icon-2 = 3;III
+ws-icon-3 = 4;IV
+ws-icon-4 = 5;V
+ws-icon-5 = 6;VI
+ws-icon-6 = 7;VII
+ws-icon-7 = 8;VIII
+ws-icon-8 = 9;IX
+ws-icon-9 = 10;X
 ws-icon-default =
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%%icon%
+label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 label-focused-underline = ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%%icon%
+label-unfocused = %icon%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%%icon%
+label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
 ;label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%%icon%
+label-urgent = %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -117,7 +124,7 @@ type = internal/network
 interface = wlp3s0
 interval = 3.0
 
-label-connected = %{A:echo %local_ip% | xclip -sel clip:}%local_ip%%{A}  %{A:nmcli dev wifi rescan&:}%essid%%{A}
+label-connected = %{A:echo %local_ip% | xclip -sel clip:}%local_ip%%{A}  %{A:nmcli dev wifi con "%essid%":}%essid%%{A}
 format-connected-prefix = " "
 format-connected = <label-connected>
 format-connected-underline = ${colors.yellow}
@@ -301,4 +308,3 @@ format-underline = ${colors.indigo}
 ; Default: %layout%
 label-layout = %name%
 label-layout-padding = 2
-
