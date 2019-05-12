@@ -19,7 +19,7 @@ set $web firefox
 # === SETUP ===
 set $mod Mod4
 
-font pango:DejaVu Sans Mono 10
+font xft:SourceCodePro 10
 
 # All commands are the QWERTY commands
 # If a comment says the command is mod-f, for example, it is mod-f on the
@@ -74,12 +74,13 @@ exec --no-startup-id "i3-msg 'workspace $w1; exec $web;'"
 # Start wtf, move to ws2
 exec --no-startup-id "i3-msg 'workspace $w2; exec $term -e /home/evan/go/bin/wtf'"
 exec --no-startup-id "i3-msg 'workspace $w2; exec $term --title term'"
-# Start weechat, move to ws2
-#exec --no-startup-id "i3-msg 'workspace $w2; exec $term -e weechat'"
 
 # scratchpad
-exec_always --no-startup-id "$term --title daily-notes -e vim /home/evan/src/personal/notes/2019/today.md"
-for_window [title="daily-notes"] move window to scratchpad
+exec_always --no-startup-id "$term -name daily-notes -e vim /home/evan/src/personal/notes/2019/today.md"
+for_window [instance="daily-notes"] move window to scratchpad
+
+exec_always --no-startup-id "$term -name tasks -e vim -c 'TW'"
+for_window [instance="tasks"] move window to scratchpad
 
 
 # === bindings ===
@@ -206,6 +207,10 @@ bindcode $mod+shift+19 move container to workspace $w10
 bindcode $mod+shift+48 move scratchpad
 # mod--
 bindcode $mod+48 scratchpad show
+# mod-n
+bindcode $mod+57 [instance="daily-notes"] scratchpad show
+# mod-t
+bindcode $mod+28 [instance="tasks"] scratchpad show
 
 # reload the configuration file - mod-shift-z
 bindcode $mod+shift+52 reload

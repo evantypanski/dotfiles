@@ -42,6 +42,9 @@ set confirm                            " Asks for confirmation for unsaved files
 set visualbell                         " Visual > audio for when doing something wrong
 set clipboard=unnamedplus              " Enables copy to clipboard
 
+set laststatus=2                       " Shows status bar (for filename)
+set statusline=%f                      " Show path in status bar (relative, %F for absolute)
+
 " Searching
 set incsearch                          " Search as characters are entered
 set hlsearch                           " Highlights matches
